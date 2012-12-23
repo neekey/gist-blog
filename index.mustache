@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    {{#gists}}
+        <div class="post-block">
+            <p class="description">{{description}}</p>
+            <p class="update-date">{{updated_at}}</p>
+            <script src="https://gist.github.com/{{id}}.js"></script>
+        </div>
+    {{/gists}}
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+    "name": "gistblog",
+    "description": "A static blog generator that use gist as post.",
+    "version": "0.0.1",
+    "author": "neekey <ni184775761@gmail.com>",
+    "keywords": [ "gist-blog" ],
+    "main": "build.js",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:neekey/gist-blog.git"
+    },
+    "dependencies": {
+        "node-github": "0.1.7",
+        "mustache": "*"
+    }
+}

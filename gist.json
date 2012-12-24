@@ -1,4 +1,6 @@
 {
+    "title": "neekey",
+    "description": "my blog",
     "username": "neekey",
     "gist_filter": "^gist-blog-.*.md"
 }

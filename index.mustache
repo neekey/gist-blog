@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <link href="./assets/common/markdown.css" rel="stylesheet"/>
+    <link href="./assets/common/screen.css" rel="stylesheet"/>
 </head>
 <body>
-
-    {{#gists}}
-        <div class="post-block">
-            <p class="description">{{description}}</p>
-            <p class="update-date">{{updated_at}}</p>
-            <script src="https://gist.github.com/{{id}}.js"></script>
-        </div>
-    {{/gists}}
+    <header>
+        <h1 class="site-title">{{meta.title}}</h1>
+        <p class="site-description">{{meta.description}}</p>
+    </header>
+    <section class="post-list">
+        {{#posts}}
+            <div class="post-block">
+                <p class="post-title">{{description}}</p>
+                <p class="update-date">{{updated_at}}</p>
+                <div class="post-md-content">{{&html}}</div>
+            </div>
+        {{/posts}}
+    <section>
 </body>
 </html>

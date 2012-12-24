@@ -1,0 +1,36 @@
+body{
+    margin: 0 auto;
+    font-family: Georgia, Palatino, serif;
+    color: #444444;
+    line-height: 1;
+    padding: 30px;
+    font-size: 12px;
+}
+
+header {
+    border-bottom: 1px #333 dotted;
+}
+header .site-title {
+    font-weight: bold;
+    font-size: 4.5em;
+}
+.site-description {
+    margin: 0 0 20px 0;
+}
+body {
+    max-width: none;
+}
+.post-block {
+    margin-top: 40px;
+}
+.post-title {
+    color: #F5593B;
+    font-size: 3em;
+}
+.update-date {
+    color: #999;
+}
+
+.post-list {
+    padding: 30px;
+}

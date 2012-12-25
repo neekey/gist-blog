@@ -14,6 +14,10 @@ I am still working on this repo, simple, not stable, but I'm glad if you try it 
   * `node build.js`
   * update this repo to your `gh-pages` branch
 
+## Screenshot
+
+![my blog](https://raw.github.com/neekey/gist-blog/master/screen_shot.png)
+
 ## TODO
 
   * Add `post detail` page, for now, all post is in `index.html`

@@ -41,7 +41,7 @@ body {
     max-width: none;
 }
 .post-block {
-    margin-top: 40px;
+    margin: 40px 0 80px 0;
 }
 .post-title {
     color: #F5593B;

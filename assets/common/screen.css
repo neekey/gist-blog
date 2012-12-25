@@ -9,11 +9,31 @@ body{
 
 header {
     border-bottom: 1px #333 dotted;
+    *zoom: 1;
+    overflow: hidden;
+    padding-bottom: 15px;
 }
 header .site-title {
     font-weight: bold;
     font-size: 4.5em;
+    margin-bottom: 10px;
+    font-family: times;
 }
+
+.avatar {
+    width: 80px;
+    padding: 10px;
+    float: left;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    height: 80px;
+    overflow: hidden;
+}
+.avatar img {
+    max-height: 80px;
+    max-width: 80px;
+}
+
 .site-description {
     margin: 0 0 20px 0;
 }
@@ -26,6 +46,7 @@ body {
 .post-title {
     color: #F5593B;
     font-size: 3em;
+    text-shadow: 2px 3px 2px #DDD;
 }
 .update-date {
     color: #999;
@@ -33,4 +54,8 @@ body {
 
 .post-list {
     padding: 30px;
+}
+
+.post-md-content {
+    padding-left: 40px;
 }

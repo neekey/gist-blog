@@ -133,7 +133,7 @@ github.gists.getFromUser({ user: username }, function( err, res ) {
 
             postGistRawCount++;
             if( postGistRawCount === postGistLen ){
-                RenderBlog( postGists );
+                RenderBlog( postGists, gistConfig, postGists[0].user );
             }
         });
     });
@@ -153,9 +153,10 @@ github.gists.getFromUser({ user: username }, function( err, res ) {
  * @return {String}
  */
 
-function RenderBlog( posts, meta, other ){
+function RenderBlog( posts, meta, user, other ){
     var blogData = {
         posts: posts,
+        user: user,
         meta: meta || gistConfig
     };
 
@@ -225,5 +226,9 @@ function GetGistRaw( url, next ){
     });
 
     req.end();
+}
+
+function GetUserInfo( username, next ){
+    github
 }
 

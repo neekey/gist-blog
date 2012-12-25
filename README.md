@@ -16,7 +16,7 @@ I am still working on this repo, simple, not stable, but I'm glad if you try it 
 
 ## Screenshot
 
-![my blog](https://raw.github.com/neekey/gist-blog/master/screen_shot.png)
+![my blog](https://f.cloud.github.com/assets/499870/30181/7361f64e-4e31-11e2-9c9e-785dd0406461.png)
 
 ## TODO
 

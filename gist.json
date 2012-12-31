@@ -2,6 +2,6 @@
     "title": "Neekey",
     "description": "在此记录我的学习&生活.",
     "username": "neekey",
-    "site_url": ".",
+    "site_url": "http://blog.neekey.net/gist-blog",
     "gist_filter": "^gist-blog-.*.md"
 }

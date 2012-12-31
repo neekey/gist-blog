@@ -1,0 +1,13 @@
+head
+    meta(charst="utf-8")
+    title GistBlog
+    include partials/assets
+body
+    include partials/header
+    section.post-list
+        each post in posts
+            div.post-block
+                p.post-title
+                    a(href="#{post.blog_filename}",target="_blank") #{post.description}
+                p.update-date #{post.updated_at}
+                div.post-md-content !{post.html}

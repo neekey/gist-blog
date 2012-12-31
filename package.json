@@ -11,7 +11,7 @@
     },
     "dependencies": {
         "node-github": "0.1.7",
-        "mustache": "*",
-        "marked": "0.2.6"
+        "marked": "0.2.6",
+        "jade": "*"
     }
 }

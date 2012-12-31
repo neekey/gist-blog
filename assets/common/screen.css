@@ -1,22 +1,37 @@
+html {
+    padding: 30px;
+    background: #E6E6E6;
+}
+
 body{
     margin: 0 auto;
-    font-family: Georgia, Palatino, serif;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
     color: #444444;
     line-height: 1;
-    padding: 30px;
+    padding: 20px;
     font-size: 12px;
-    background: #EFEFEF;
+    box-shadow: 0 2px 6px 0 #ccc;
+    background: white;
+}
+
+a, a:visited {
+    color: #21759B;
+    text-decoration: none;
+}
+a:hover {
+    color: #0f3647;
 }
 
 header {
-    border-bottom: 1px #333 dotted;
+    border-bottom: 1px solid #EFEFEF;
     *zoom: 1;
     overflow: hidden;
     padding-bottom: 15px;
+    text-align: center;
 }
 header .site-title {
     font-weight: bold;
-    font-size: 4.5em;
+    font-size: 3em;
     margin-bottom: 10px;
     font-family: times;
 }
@@ -30,6 +45,7 @@ header .site-title {
     height: 80px;
     overflow: hidden;
     background: white;
+    display: none;
 }
 .avatar img {
     max-height: 80px;
@@ -38,6 +54,7 @@ header .site-title {
 
 .site-description {
     margin: 0 0 20px 0;
+    color: #757575;
 }
 body {
     max-width: none;
@@ -46,26 +63,16 @@ body {
     margin: 40px 0 80px 0;
 }
 .post-title {
-    color: #F5593B;
-    font-size: 3em;
+    font-size: 2em;
     text-shadow: 2px 3px 2px #DDD;
     font-weight: bold;
-}
-.post-title a {
-    color: #f5593b;
+    line-height: 1.2em;
+    margin-bottom: 0.5em;
 }
 
 a.post-more {
-    padding: 6px;
     margin-left: 40px;
-    background: #bbb;
-    width: 70px;
-    color: white;
-    display: block;
-}
-
-a.post-more:hover {
-    background: #F5593B;
+    font-size: 14px;
 }
 
 .update-date {
@@ -77,5 +84,7 @@ a.post-more:hover {
 }
 
 .post-md-content {
+    margin-top: 50px;
     padding-left: 40px;
+    color: #444;
 }

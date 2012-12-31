@@ -49,7 +49,25 @@ body {
     color: #F5593B;
     font-size: 3em;
     text-shadow: 2px 3px 2px #DDD;
+    font-weight: bold;
 }
+.post-title a {
+    color: #f5593b;
+}
+
+a.post-more {
+    padding: 6px;
+    margin-left: 40px;
+    background: #bbb;
+    width: 70px;
+    color: white;
+    display: block;
+}
+
+a.post-more:hover {
+    background: #F5593B;
+}
+
 .update-date {
     color: #999;
 }

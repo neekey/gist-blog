@@ -16,7 +16,8 @@ I am still working on this repo, simple, not stable, but I'm glad if you try it 
 
 ## Screenshot
 
-![my blog](https://f.cloud.github.com/assets/499870/30181/7361f64e-4e31-11e2-9c9e-785dd0406461.png)
+![Screen Shot 2013-01-04 at 8 39 52 PM](https://f.cloud.github.com/assets/499870/43072/df0ca9ec-566b-11e2-95f1-61593a0e8452.png)
+
 
 ## TODO
 

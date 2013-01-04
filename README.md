@@ -21,4 +21,5 @@ I am still working on this repo, simple, not stable, but I'm glad if you try it 
 
 ## TODO
 
-  * Add `post detail` page, for now, all post is in `index.html`
+  * Add comment.
+  * ~~Add `post detail` page, for now, all post is in `index.html`~~

@@ -1,0 +1,1 @@
+<html><body>You are being <a href="https://gist.github.com/neekey/5123505/raw/7b0bf79f8357cf79a9595a3aa31236ee8342e24b/gist-blog-ignore-files-to-be-watch-in-meteor.md">redirected</a>.</body></html>

@@ -1,0 +1,1 @@
+<html><body>You are being <a href="https://gist.github.com/neekey/5123473/raw/01bd1d315ec867cb1b612f4a25b0b07c78430d50/gist-blog-sync-run-within-meter-methods.md">redirected</a>.</body></html>

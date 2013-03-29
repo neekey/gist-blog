@@ -1,3 +1,38 @@
 <!DOCTYPE html><html><head><meta charst="utf-8"><title>GistBlog</title><!--link(href="#{meta.site_url}/assets/bootstrap/css/bootstrap.min.css",rel="stylesheet")--><link href="http://blog.neekey.me/gist-blog/assets/common/markdown.css" rel="stylesheet"><link href="http://blog.neekey.me/gist-blog/assets/common/screen.css" rel="stylesheet"><link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/rainbow.min.css">
 <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script></head><body><header><div class="avatar"><img src="https://secure.gravatar.com/avatar/8896cc725e36350023e7f41f0455b8aa?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"></div><h1 class="site-title"><a href="http://blog.neekey.me/gist-blog">Neekey</a></h1><p class="site-description">在此记录我的学习&amp;生活.</p></header><div class="post-block"><p class="post-title">在Meteor中使用node.js的模块系统</p><p class="update-date">2013-03-09T08:31:35Z</p><div class="post-md-content"><html><body>You are being <a href="https://gist.github.com/neekey/5123493/raw/9979f9325064129a3b676a24aa0b550f45de378b/gist-blog-use-node-module-with-meteor.md">redirected</a>.</body></html></div></div></body></html>
+<script>hljs.initHighlightingOnLoad();</script></head><body><header><div class="avatar"><img src="https://secure.gravatar.com/avatar/8896cc725e36350023e7f41f0455b8aa?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"></div><h1 class="site-title"><a href="http://blog.neekey.me/gist-blog">Neekey</a></h1><p class="site-description">在此记录我的学习&amp;生活.</p></header><div class="post-block"><p class="post-title">在Meteor中使用node.js的模块系统</p><p class="update-date">2013-03-09T08:31:35Z</p><div class="post-md-content"><p>这是Meteor的大坑，希望以后这块能做的更好。
+
+</p>
+<p>首先，在Meteor中，由于经过了沙箱的封装，无法直接触碰到require, module等全局变量。
+
+</p>
+<p>且，Meteor会自动执行所有不在<code>test</code>，<code>public</code>目录下的js文件，因此我们需要使用的npm模块都需要安装到public目录下。
+
+</p>
+<p>然后使用<a href="https://github.com/possibilities/meteor-node-modules">meteor-node-module</a>进行模块的加载。
+
+</p>
+<p>举例，我们现在需要使用<code>mustache</code>，那么<code>cd</code>到<code>public</code>目录下，安装之<code>npm install mustache</code>，然后在我们的代码中使用:
+
+</p>
+<pre><code class="lang-js">var Mustache = NodeModules.require( &#39;mustache&#39; );</code></pre>
+<p>来引入模块。
+
+</p>
+<hr>
+<p>上面没有提到自定义模块。是的，因为meteor根本没有把module等变量暴露出来，因此目前来说模块按照文件分离的话，只能通过全局变量了，比如：
+
+</p>
+<p>在a.js文件中定义:
+
+</p>
+<pre><code class="lang-js">Myapp = {};</code></pre>
+<p>在b.js文件中定义:
+</p>
+<pre><code class="lang-js">Myapp.foo = function(){ ... }</code></pre>
+<p>在c.js中调用:
+
+</p>
+<pre><code class="lang-js">Myapp.foo();</code></pre>
+<p>嗯...感觉回到了以前的前端脚本是么...</p>
+</div></div></body></html>

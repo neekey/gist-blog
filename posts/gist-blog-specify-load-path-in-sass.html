@@ -1,3 +1,112 @@
 <!DOCTYPE html><html><head><meta charst="utf-8"><title>GistBlog</title><!--link(href="#{meta.site_url}/assets/bootstrap/css/bootstrap.min.css",rel="stylesheet")--><link href="http://blog.neekey.me/gist-blog/assets/common/markdown.css" rel="stylesheet"><link href="http://blog.neekey.me/gist-blog/assets/common/screen.css" rel="stylesheet"><link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/rainbow.min.css">
 <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script></head><body><header><div class="avatar"><img src="https://secure.gravatar.com/avatar/8896cc725e36350023e7f41f0455b8aa?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"></div><h1 class="site-title"><a href="http://blog.neekey.me/gist-blog">Neekey</a></h1><p class="site-description">在此记录我的学习&amp;生活.</p></header><div class="post-block"><p class="post-title">使用load-path来指定SASS的import查找路径</p><p class="update-date">2013-01-08T01:23:05Z</p><div class="post-md-content"><html><body>You are being <a href="https://gist.github.com/neekey/4480251/raw/08906418bafcafb6be48197062d182b009d57600/gist-blog-specify-load-path-in-sass.md">redirected</a>.</body></html></div></div></body></html>
+<script>hljs.initHighlightingOnLoad();</script></head><body><header><div class="avatar"><img src="https://secure.gravatar.com/avatar/8896cc725e36350023e7f41f0455b8aa?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"></div><h1 class="site-title"><a href="http://blog.neekey.me/gist-blog">Neekey</a></h1><p class="site-description">在此记录我的学习&amp;生活.</p></header><div class="post-block"><p class="post-title">使用load-path来指定SASS的import查找路径</p><p class="update-date">2013-01-08T01:23:05Z</p><div class="post-md-content"><p><a href="http://http://sass-lang.com/">SASS</a>的<code>@import</code>是最常用的功能之一，默认我们可以使用相对，绝对路径来以当前目录为根节点进行文件的查找，但是有时候我们需要引入的文件并不在我们的当前目录下（并且文件位置相差很大，特别是很多需要被多个项目共用的框架等，如compass）。
+
+</p>
+<p>针对这样的需求，SASS 可以通过指定<code>--load-path</code> 来添加一个额外用于查找的路径，可以看官方文档：<a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#import">http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#import</a>
+
+</p>
+<blockquote>
+<p>Sass looks for other Sass files in the current directory, and the Sass file directory under Rack, Rails, or Merb. Additional search directories may be specified using the :load_paths option, or the --load-path option on the command line.
+
+</p>
+</blockquote>
+<p>下面举个例子，来说明如何使用:
+
+</p>
+<h4>目录</h4>
+<p>假设我们的源码目录结构如下：
+
+</p>
+<pre><code>dir/
+ | ----- subDir/
+ | ----- | ----- test.scss
+ | ----- | ----- mod.scss
+ | ----- | ----- sibDir
+ | ----- | ----- | ----- base.scss
+sibDir/
+ | ----- base.scss
+ | ----- common.scss</code></pre>
+<p>我们需要编译的入口文件为<code>/dir/subDir/test.scss</code>，它除了需要<code>import</code>当前目录下的模块外，还需要引入<code>/sibdir</code>下的模块。
+如果是正常情况下，我们需要在<code>test.scss</code>中使用相对路径:
+
+</p>
+<pre><code class="lang-scss">@import &quot;../../sibDir/common.scss&quot;</code></pre>
+<p>那么下面我们用<code>--load-path</code>来简化引用路径。
+
+</p>
+<h3>测试</h3>
+<p>针对<code>test.scss</code>文件进行编译，命令为：
+
+</p>
+<pre><code class="lang-shell">$ sass test.scss test.css --load-path ~/Dropbox/nodejs/app/sassPathTest/`</code></pre>
+<p>先把几个文件的内容列一下：
+
+</p>
+<p><code>sibDir/common.scss</code>:
+
+</p>
+<pre><code class="lang-scss">body{ color: red; }</code></pre>
+<p><code>sibDir/base.scss</code>:
+
+</p>
+<pre><code class="lang-scss">a { color: red; }</code></pre>
+<p><code>dir/subDir/mod.scss</code>:
+
+</p>
+<pre><code class="lang-scss">div { color: yellow; }</code></pre>
+<p><code>dir/subDir/sibDir/base.scss</code>:
+
+</p>
+<pre><code class="lang-scss">a { color: yellow; }</code></pre>
+<p>这边的测试文件特地举出了下面几种情景：
+  <em> 当前目录模块: <code>mod.scss</code> 
+  </em> 在外层目录的模块：<code>sibDir/common</code>
+  * 在当前目录中引用地址与外层目录模块一致但是内容不一致模块：<code>sibDir/base.scss</code> 和 <code>dir/subDir/sibDir/base.scss</code>
+
+</p>
+<p>OK，下面对几种情况进行测试：
+
+</p>
+<p>首先，引入了外部模块和内部模块：
+
+</p>
+<p><code>test.scss</code>：
+
+</p>
+<pre><code class="lang-scss">@import &quot;sibDir/common&quot;;
+@import &quot;mod&quot;;</code></pre>
+<p><code>test.css</code>:
+
+</p>
+<pre><code class="lang-css">body{ color: red; }
+div { color: yellow; }</code></pre>
+<p>达到了我们的目的，下面我们再看看如果单签目录和外部目录中出现同名的模块会发生什么：
+
+</p>
+<p>我们将<code>test.scss</code>修改为：
+
+</p>
+<pre><code class="lang-scss">@import &quot;sibDir/common&quot;;
+@import &quot;sibDir/base&quot;
+@import &quot;mod&quot;;</code></pre>
+<p><code>test.css</code>:
+
+</p>
+<pre><code class="lang-css">body{ color: red; }
+a { color: yellow }
+div { color: yellow; }</code></pre>
+<p>可以看到，SASS优先引入了当前目录的模块
+
+</p>
+<h3>总结</h3>
+<p>所以SASS的<code>--load-path</code>的超找原则基本上是
+  <em> 根据<code>@import</code>中给定的路径，先在本地查找
+  </em> 若本地不存在，就在<code>--load-path</code>作为<code>root</code>进行查找
+
+</p>
+<p>另外<code>--load-path</code>可以多次指定，也就说可以指定多个<code>Additional search directories</code>.
+
+</p>
+<p>题外话：想必<a href="http://compass-style.org/">compass</a>也就是这么将自己引入进来的。</p>
+</div></div></body></html>

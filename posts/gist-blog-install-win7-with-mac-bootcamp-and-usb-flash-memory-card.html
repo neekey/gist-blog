@@ -1,3 +1,35 @@
 <!DOCTYPE html><html><head><meta charst="utf-8"><title>GistBlog</title><!--link(href="#{meta.site_url}/assets/bootstrap/css/bootstrap.min.css",rel="stylesheet")--><link href="http://blog.neekey.me/gist-blog/assets/common/markdown.css" rel="stylesheet"><link href="http://blog.neekey.me/gist-blog/assets/common/screen.css" rel="stylesheet"><link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/rainbow.min.css">
 <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script></head><body><header><div class="avatar"><img src="https://secure.gravatar.com/avatar/8896cc725e36350023e7f41f0455b8aa?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"></div><h1 class="site-title"><a href="http://blog.neekey.me/gist-blog">Neekey</a></h1><p class="site-description">在此记录我的学习&amp;生活.</p></header><div class="post-block"><p class="post-title">在Mac中使用Boot Camp安装win7</p><p class="update-date">2013-02-13T18:21:12Z</p><div class="post-md-content"><html><body>You are being <a href="https://gist.github.com/neekey/4942391/raw/038e2f9483a066a4c06ccb71b1f2e7043622e984/gist-blog-install-win7-with-mac-bootcamp-and-usb-flash-memory-card.md">redirected</a>.</body></html></div></div></body></html>
+<script>hljs.initHighlightingOnLoad();</script></head><body><header><div class="avatar"><img src="https://secure.gravatar.com/avatar/8896cc725e36350023e7f41f0455b8aa?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"></div><h1 class="site-title"><a href="http://blog.neekey.me/gist-blog">Neekey</a></h1><p class="site-description">在此记录我的学习&amp;生活.</p></header><div class="post-block"><p class="post-title">在Mac中使用Boot Camp安装win7</p><p class="update-date">2013-02-13T18:21:12Z</p><div class="post-md-content"><p>Mac自带的Boot Camp程序，可以非常便利地帮助用户在Mac电脑上同时安装一个Windows系统。针对Macbook Air用户，这里记录下在没有光驱的情况下，使用USB制作启动盘来安装Windows的过程。
+
+</p>
+<h3>需要准备的物品：</h3>
+<p>1、U盘一个（&gt;= 4g)
+2、win7镜像文件（.iso)
+3、rEFIT.dmg（用于让不支持USB等外设设备启动引导的设备能识别USB设备启动）
+
+</p>
+<h3>制作启动盘</h3>
+<p>打开Bootcamp，先检查一下是否有第一个选项：“创建windows 7安装盘”，如果没有，则本身是你的硬件属于不能原生支持USB等外设引导（比如第一代的air），这里我们需要进行一定的Hack，让Bootcamp认为我们的这个硬件也能支持，Hack方式如下：
+
+</p>
+<p>在应用程序——实用工具——找到Bootcamp助理，右键——显示包内容——打开Contents文件夹，找到Info.plist文件，里面是一个XML配置文件，找到如下两个字段区域：<code>&lt;key&gt;DARequiredROMVersions&lt;/key&gt;</code>,<code>&lt;key&gt;USBBootSupportedModels&lt;/key&gt;</code>，分别在下方的<code>array</code>节点中将你自己硬件的<code>Boot Rom</code>信息添加到第一行。<code>Boot Rom</code>信息可以在：关于本机-&gt;系统报告中找到。修改完成后重新打开Boot Camp就有这个选项了。
+
+</p>
+<p>将三个选项都勾选（1、创建系统盘，2、下载更新，3、安装windows），然后点击下一步，在浏览器选取windows景象文件，下面的盘符中选定要将那个盘作为需要制作的启动盘（注意会将该盘符格式化，自己小心），然后点击下一步，就开始了。
+
+</p>
+<p>注意到，下载更新这个过程（根据不同的网络状况）会非常漫长，它在下载windows下的驱动程序，以及适用于windows的Boot Camp程序，会自动保存到启动盘的windowsSupport文件夹中，因此这里推荐下载。
+
+</p>
+<p>待进度条走完以后，会提示为windows设置分区，设置完成后，会进行分区，分区完成后会自动重启。
+
+</p>
+<h3>安装windows</h3>
+<p>重启时按Option键，如果能看到启动盘（你的U盘），那么就点进去，应该就能进行windows的安装过程了，否则选择Mac，我们继续解决启动盘不识别的问题：
+
+</p>
+<p>重新回到Mac后，安装rEFIT（现在的新版，下过来的DMG文件，里面是mpkg的一键安装），然后cd到<code>/efit/refit/</code>目录下，执行<code>sudo sh enable-aways.sh</code>。执行完毕后重启，应该不用按option，就会出现rEFIT的菜单了，选择你的U盘即可进行windows的安装了。
+
+</p>
+</div></div></body></html>
